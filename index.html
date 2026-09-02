@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Aniversario, Mi Amor!</title>
+    <style>
+        :root { --primary: #e63946; --accent: #ffb703; --bg: #fff5f5; --text: #2b2d42; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); text-align: center; overflow-x: hidden; padding-bottom: 50px; }
+        .heart { position: fixed; color: rgba(230, 57, 70, 0.6); font-size: 20px; user-select: none; pointer-events: none; animation: float 6s linear infinite; z-index: 999; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        header { padding: 40px 20px; background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; font-family: Georgia, serif; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+        .music-container { margin: 25px auto; }
+        .music-btn { background-color: var(--primary); color: white; border: none; padding: 12px 28px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3); transition: transform 0.2s, background-color 0.2s; }
+        .music-btn:hover { transform: scale(1.05); background-color: #d62828; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 30px 20px; max-width: 1000px; margin: 0 auto; }
+        .polaroid { background: white; padding: 15px 15px 25px 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: rotate(-2deg); transition: transform 0.3s ease, box-shadow 0.3s ease; width: 260px; border-radius: 4px; }
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+        .polaroid:hover { transform: rotate(0deg) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); z-index: 10; }
+        .polaroid img { width: 100%; height: 240px; object-fit: cover; border-radius: 2px; }
+        .polaroid .caption { margin-top: 15px; font-family: 'Comic Sans MS', 'Caveat', cursive, sans-serif; font-size: 1.1rem; color: #4a4a4a; }
+        .letter-section { max-width: 700px; margin: 40px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align: left; position: relative; }
+        .letter-section h2 { text-align: center; color: var(--primary); margin-bottom: 20px; font-family: Georgia, serif; }
+        .letter-content { font-size: 1.15rem; line-height: 1.8; color: #444; white-space: pre-line; }
+        footer { margin-top: 40px; color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Feliz Aniversario, Mi Amor! ❤️</h1>
+        <p>Celebrando cada momento único a tu lado</p>
+    </header>
+    <div class="music-container">
+        <audio id="bg-music" loop>
+            <source src="cancion.mp3" type="audio/mpeg">
+        </audio>
+        <button class="music-btn" onclick="toggleMusic()">🎵 Reproducir Nuestra Canción</button>
+    </div>
+    <div class="gallery">
+        <div class="polaroid">
+            <img src="foto1.jpg" alt="Nuestro Gran Día">
+            <div class="caption">El día que unimos nuestras vidas ❤️</div>
+        </div>
+        <div class="polaroid">
+            <img src="foto2.jpg" alt="Un Viaje Especial">
+            <div class="caption">Recuerdos de nuestras mejores aventuras ✈️</div>
+        </div>
+        <div class="polaroid">
+            <img src="foto3.jpg" alt="Momentos Juntos">
+            <div class="caption">Por mil momentos más juntos 🥰</div>
+        </div>
+    </div>
+    <div class="letter-section">
+        <h2>Para el Amor de mi Vida</h2>
+        <div class="letter-content">
+Querida esposa,
+
+Hoy celebramos un año más juntos, y no puedo evitar recordar todos los momentos hermosos que hemos compartido desde el primer día.
+
+Gracias por tu amor incondicional, tu paciencia y por hacer de cada día una aventura maravillosa. Cada risa, cada abrazo y cada paso que damos juntos reafirma que eres la mejor decisión de mi vida.
+
+Te amo con todo mi corazón. ¡Feliz Aniversario!
+        </div>
+    </div>
+    <footer>Con todo mi amor, hecho especialmente para ti. ✨</footer>
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.querySelector('.music-btn');
+        function toggleMusic() {
+            if (music.paused) { music.play(); btn.innerHTML = '⏸️ Pausar Música'; } 
+            else { music.pause(); btn.innerHTML = '🎵 Reproducir Nuestra Canción'; }
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
